@@ -37,6 +37,8 @@
             this.triButton = new System.Windows.Forms.Button();
             this.listTriee = new System.Windows.Forms.ListView();
             this.ExitButton = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // shapeContainer1
@@ -76,12 +78,15 @@
             // 
             // listNonTriee
             // 
+            this.listNonTriee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.listNonTriee.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listNonTriee.Location = new System.Drawing.Point(30, 67);
             this.listNonTriee.Name = "listNonTriee";
             this.listNonTriee.Size = new System.Drawing.Size(121, 286);
             this.listNonTriee.TabIndex = 3;
             this.listNonTriee.UseCompatibleStateImageBehavior = false;
-            this.listNonTriee.View = System.Windows.Forms.View.List;
+            this.listNonTriee.View = System.Windows.Forms.View.Details;
             // 
             // InitializeButton
             // 
@@ -105,12 +110,14 @@
             // 
             // listTriee
             // 
+            this.listTriee.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader2});
             this.listTriee.Location = new System.Drawing.Point(239, 67);
             this.listTriee.Name = "listTriee";
             this.listTriee.Size = new System.Drawing.Size(121, 286);
             this.listTriee.TabIndex = 6;
             this.listTriee.UseCompatibleStateImageBehavior = false;
-            this.listTriee.View = System.Windows.Forms.View.List;
+            this.listTriee.View = System.Windows.Forms.View.Details;
             // 
             // ExitButton
             // 
@@ -121,6 +128,16 @@
             this.ExitButton.Text = "Quitter";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Liste Non Triée";
+            this.columnHeader1.Width = 116;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Liste Triée";
+            this.columnHeader2.Width = 116;
             // 
             // Form1
             // 
@@ -153,6 +170,8 @@
         private System.Windows.Forms.Button triButton;
         private System.Windows.Forms.ListView listTriee;
         private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
 
     }
 }

@@ -32,14 +32,18 @@ namespace TP3_Threads_Background_Worker
             int tailleTab = int.Parse(textBoxArray.Text);
             tableau = new double[tailleTab];
 
-            Thread initThread = new Thread(() => Initialiser(tableau));
-            initThread.IsBackground = true;
-            initThread.Start();
+            Initialiser(tableau);
 
-            for (int i = 0; i < tailleTab - 1; i++)
+            ListViewItem[] listItem = new ListViewItem[tailleTab];
+            for (int i = 0; i < tailleTab; i++)
             {
-                listNonTriee.Items.Add(tableau[i].ToString());
+
+                ListViewItem itemTMP = new ListViewItem();
+                itemTMP.Text = tableau[i].ToString();
+                listItem[i] = itemTMP;
             }
+
+            this.listNonTriee.Items.AddRange(listItem);
         }
 
         private void triButton_Click(object sender, EventArgs e)

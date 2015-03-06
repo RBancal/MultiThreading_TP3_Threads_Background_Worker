@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,7 +27,7 @@ namespace TP3_Threads_Background_Worker
             backgroundWorker1.RunWorkerAsync();
         }
 
-        private static void TriSelectionPermutation(double[] tableau)
+        private void TriSelectionPermutation(double[] tableau)
         {
             int i, iRech, iMin;
             double tmp;
@@ -48,14 +49,14 @@ namespace TP3_Threads_Background_Worker
                     tableau[i] = tmp;
                 }
 
-                progression = i/tableau.Length*100;
+                progression = (int) Math.Round(((Double)i*100)/tableau.Length);
+                this.backgroundWorker1.ReportProgress(progression);
             }
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             TriSelectionPermutation(tableau);
-
         }
         
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -66,7 +67,7 @@ namespace TP3_Threads_Background_Worker
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             okButton.Enabled = true;
-            cancelButton.Hide();
+            cancelButton.Enabled = false;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
